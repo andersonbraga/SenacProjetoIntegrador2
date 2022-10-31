@@ -21,4 +21,6 @@ Sistemas vai ser usado para estoque de uma loja de peça eletrica para caminhõe
 - ASP.NET Core Blazor Server
 -Dapper
 
-#Está em desevolvimento, apresenta erros
+# Atualizações
+
+Foi criado as Razor Page, criado o CRUD com blazor server e com mysql, utilizando o workbench, foi usado stored procedure para fazer update e insert.
