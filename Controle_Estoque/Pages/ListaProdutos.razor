@@ -1,0 +1,51 @@
+﻿@page "/produtos"
+
+@inject IProdutoService produtoService
+
+<h2>Produtos</h2>
+<p>
+    <a href="/novoproduto">Novo Produto</a>
+</p>
+@if (produtos == null)
+{
+    <p>Não tem nenhum produto cadastrado</p>
+}
+else
+{
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Estoque</th>
+                <th>Preco</th>
+                <th>Imagem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in produtos)
+            {
+                <tr>
+                    <td>@produto.nome</td>
+                    <td>@produto.descricao</td>
+                    <td>@produto.estoque</td>
+                    <td>@produto.preco</td>
+                    <td>@produto.imagem</td>
+                    <td>
+                        <a href='/editaproduto/@produto.id_produto'>Edita</a>
+                        <a href='/deletaproduto/@produto.id_produto'>Deleta</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    IEnumerable<Produto> produtos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        produtos = await produtoService.ListAll();
+    }
+}     
